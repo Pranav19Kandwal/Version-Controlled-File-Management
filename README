@@ -1,0 +1,45 @@
++----------------------------------------------------------------------+
+|       Title:  Version-Controlled File System Management Tool         |
+|       Author: PRANAV KANDWAL                                         |
+|       COURSE: Design and Engineering of Computing Systems(2024-2025) |
++----------------------------------------------------------------------+
+
++---------------------------------------------- OVERVIEW --------------------------------------------------------------------------------+
+| The project deals with the design and implementation of a comprehensive versioning-based file system                                   |
+| that enables efficient management of file versions through features such as snapshots, rollback, and additional functionalities.       |
+| The primary aim is to provide users with a robust mechanism for tracking changes in files over time,                                   |
+| facilitating easy recovery of previous versions and seamless comparison of file states.                                                |
++----------------------------------------------------------------------------------------------------------------------------------------+
+
++---------------------------------------------- MAIN FEATURES ------------------------------------------------------------+
+| The system supports snapshots, which capture the complete state of the file system at specific moments,                 |
+| allowing users to restore data to a prior configuration.                                                                |
+|                                                                                                                         |
+| The system also supports version control per file, maintained using a circular log(FIFO),                               |
+| allowing users to revert an individual file to a chosen historical version w/o affecting the rest of the file system.   |         
+|                                                                                                                         |
+| Rollback feature allows users to revert the file system to any recorded snapshot,                                       |
+| ensuring the ability to restore previous file versions as needed.                                                       |
+|                                                                                                                         |
+| Add_file feature allows users to add new files to the system with metadata like author and commit note,                 |
+| which helps with audit and traceability.                                                                                |
+|                                                                                                                         |
+| Log_history feature displays the log entries associated with a specific file.                                           |
+| This allows users to track changes, see who modified the file, and understand the history of updates made.              |
+|                                                                                                                         |
+| List_snapshots feature displays all the snapshots that have been created, including their tags and timestamps.          |
+| This provides users with an overview of available snapshots, facilitating informed decisions for rollbacks.             |
+|                                                                                                                         |
+| The system also supports for file deletion and recovery, preserving data until explicitly purged.                       |
+| It also supports snapshot obsolescence, for audit purposes, and snapshot deletion for complete removal.                 |
+|                                                                                                                         |
+| Save and Load module saves/loads the complete current file system state to/from a file,                                 |
+| persist the current file system state to disk and restore it later using binary serialization.                          |
++-------------------------------------------------------------------------------------------------------------------------+
+
++---------------------------------------------- FUTURE WORK -----------------------------------------------+
+| Currently, the system versions files by saving the entire content for each update.                       |
+| While this simplifies implementation,  it's not space-efficient for large files with minor edits.        |
+| Future Goal: Implement a Git-style delta system that stores only the changes (diffs) between versions    |
+| to improve performance and storage efficiency.                                                           |
++----------------------------------------------------------------------------------------------------------+
